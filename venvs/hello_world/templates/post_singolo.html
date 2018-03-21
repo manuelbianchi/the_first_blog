@@ -1,0 +1,14 @@
+<!--DOCTYPE html -->
+
+     {% extends "base.html" %}
+
+
+    <title> {% block head_title %}{{object.titolo}} | {{block.super}}{% endblock head_title %} </title>
+
+    {% block content %}
+
+    <h1>{{ object.titolo }}</h1>
+
+        <p>{{ object.contenuto|safe|linebreaks}}</p>
+        <h4>{{ object.data }}</h4>
+    {% endblock content %}

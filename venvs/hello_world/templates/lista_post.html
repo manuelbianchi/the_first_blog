@@ -1,0 +1,24 @@
+<!--DOCTYPE html -->
+
+
+   {% extends "base.html" %}
+   {% load static %}
+    {% block content %}
+        <img src="{% static 'posts/img/blog.png' %}" />
+        {% for object in object_list %}
+        <a href="{{object.get_absolute_url}}"><h1>{{object.titolo}}</h1></a>
+        {{ object.data }}
+        {{ object.contenuto|safe|linebreaks|truncatewords_html:50 }}
+        {% endfor %}
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Indietro</a>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Avanti</a>
+        {% endif %}
+
+
+
+    {% endblock content %}
+
